@@ -64,7 +64,9 @@ export default function ImageCarousel({ images = [] }: ImageCarouselProps) {
       <div className="image-container">
         {images.map((img, index) => (
           <img
-            className="carousel-image"
+            className={`carousel-image ${
+              index === imageIndex ? "fade-in" : ""
+            }`}
             src={img}
             key={index}
             alt={img}
