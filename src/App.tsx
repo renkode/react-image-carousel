@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <ImageCarousel images={images} />
+      <ImageCarousel images={images} interval={3000} />
     </div>
   );
 }

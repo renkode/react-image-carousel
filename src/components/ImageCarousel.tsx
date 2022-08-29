@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 
 interface ImageCarouselProps {
   images: Array<string>;
+  interval: number; // milliseconds
 }
 
 // no need to reset timer for some reason.
 
-export default function ImageCarousel({ images = [] }: ImageCarouselProps) {
-  const INTERVAL = 3000;
+export default function ImageCarousel({
+  images = [],
+  interval = 3000,
+}: ImageCarouselProps) {
   let TIMER: ReturnType<typeof setInterval>;
   const SLOTS = images.length;
   const [imageIndex, setImageIndex] = useState<number>(0);
@@ -27,7 +30,7 @@ export default function ImageCarousel({ images = [] }: ImageCarouselProps) {
     if (SLOTS === 0) return;
     TIMER = setInterval(() => {
       changeIndex(imageIndex + 1);
-    }, INTERVAL);
+    }, interval);
     console.log("tick");
     return () => clearInterval(TIMER); // clear on dismount
   });
